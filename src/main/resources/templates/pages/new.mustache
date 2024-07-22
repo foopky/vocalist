@@ -1,0 +1,16 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <div id="add-word-form">
+        <h2>단어 추가하기</h2>
+        <form class = "container" action="/voca/create" method="post">
+            <input type="text" id="word" placeholder="단어명" name="word">
+            <input type="text" id="meaning" placeholder="뜻" name="meaning">
+            <input type="number" id="importance" placeholder="중요도" min="1" max="5" name="importance">
+            <button onclick="addWord()">추가</button>
+        </form>
+    </div>
+    <a href="/voca/index">Return</a>
+</head>

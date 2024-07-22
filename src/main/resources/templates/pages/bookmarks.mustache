@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어장 템플릿</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .word-row {
+            cursor: pointer;
+        }
+        .word-row:hover {
+            background-color: #f9f9f9;
+        }
+        #add-word-form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .sort-buttons div {
+            margin-bottom: 10px;
+        }
+        .sort-buttons button {
+            background-color: #2196F3;
+        }
+        .sort-buttons button:hover {
+            background-color: #0b7dda;
+        }
+        a {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a:hover {
+            background-color: #0b7dda;
+        }
+        .increase-decrease-buttons form {
+            display: inline;
+        }
+        .increase-decrease-buttons button {
+            background-color: #FF9800;
+        }
+        .increase-decrease-buttons button:hover {
+            background-color: #e68a00;
+        }
+    </style>
+</head>
+<body>
+
+<h1>북마크</h1>
+<table>
+    <thead>
+    <tr>
+        <th>단어명</th>
+        <th>뜻</th>
+        <th>중요도</th>
+        <th>카운트</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#Bookmarks}}
+        <tr class="word-row">
+            <td>{{word}} <a href="/voca/{{id}}/edit">수정하기</a></td>
+            <td>{{meaning}}</td>
+            <td>{{importance}}</td>
+            <td class="increase-decrease-buttons">{{count}}
+                <form action="/Bookmarked/{{id}}/delete" method="get">
+                    <button type="submit">북마크 삭제하기</button>
+                </form>
+            </td>
+
+        </tr>
+    {{/Bookmarks}}
+    </tbody>
+</table>
+
+<div id="add-word-form">
+    <a href="/voca/index">전체 단어 보기</a>
+</div>
+
+</body>
+</html>

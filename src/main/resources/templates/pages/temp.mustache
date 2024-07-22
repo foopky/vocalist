@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어장 템플릿</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .word-row {
+            cursor: pointer;
+        }
+        .word-row:hover {
+            background-color: #f9f9f9;
+        }
+        #add-word-form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>단어장</h1>
+<div>
+    <form action="/voca/sort" method="get">
+        <button value="0" type="submit" name="condition">기본정렬</button>
+        <div>오름차순:
+            <button value="5" type="submit" name="condition">ID</button>
+            <button value="6" type="submit" name="condition">단어</button>
+            <button value="7" type="submit" name="condition">중요도</button>
+            <button value="8" type="submit" name="condition">카운트</button>
+        </div>
+        <div>내림차순:
+            <button value="1" type="submit" name="condition">ID</button>
+            <button value="2" type="submit" name="condition">단어</button>
+            <button value="3" type="submit" name="condition">중요도</button>
+            <button value="4" type="submit" name="condition">카운트</button>
+        </div>
+    </form>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>단어명</th>
+        <th>뜻</th>
+        <th>중요도</th>
+        <th>카운트</th>
+    </tr>
+    </thead>
+    {{#vocabularies}}
+        <tr>
+            <th>{{word}} <a href="/voca/{{id}}/edit">수정하기</a></th>
+            <th>{{meaning}}</th>
+            <th>{{importance}}</th>
+            <th>{{count}}
+                <form action="/voca/{{id}}/increase" method="get"><button>Increase</button></form>
+                <form action="/voca/{{id}}/decrease" method="get"><button>Decrease</button></form>
+            </th>
+        </tr>
+    {{/vocabularies}}
+</table>
+
+<a href="/voca/new">Add a vocabulary</a>
+
+
+
+</body>
+</html>

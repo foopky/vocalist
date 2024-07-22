@@ -1,0 +1,23 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어 수정</title>
+</head>
+<body>
+<h1>단어 수정</h1>
+{{#vocabulary}}
+<form action="/voca/{{id}}/update" method="post">
+    <input name="id" type="hidden" value="{{id}}">
+    <div>단어: <input type="text" name="word" value="{{word}}"></div>
+    <div>뜻:  <input type="text" name="meaning" value="{{meaning}}"></div>
+    <div>중요도: <input type="number" min="1" max="5" name="importance" value="{{importance}}"></div>
+    <div>카운트: <input type="number" name="count" value="{{count}}"></div>
+    <button type="submit" class="btn btn-primary">수정</button>
+</form>
+<form action="/voca/{{id}}/delete" method="get">
+    <button type="submit">삭제하기</button>
+</form>
+{{/vocabulary}}
+</body>
+</html>
